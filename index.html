@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serra d'Equacions | Portal Matemàtic LOMLOE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="loader" class="loader-wrapper">
+        <div class="spinner"></div>
+        <p>Carregant recursos matemàtics...</p>
+    </div>
+
+    <nav id="mySidebar" class="sidebar">
+        <div class="sidebar-header">
+            <img src="logo.png" alt="Logo Serra" class="sidebar-logo">
+            <button class="close-btn" onclick="closeNav()">&times;</button>
+        </div>
+        <div class="sidebar-links">
+            <button class="nav-item" onclick="anarA('home')"><i class="fas fa-home"></i> Pàgina d'Inici</button>
+            
+            <div class="side-label">EDUCACIÓ SECUNDÀRIA</div>
+            <button class="nav-item" onclick="anarA('eso1')">1r d'ESO</button>
+            <button class="nav-item" onclick="anarA('eso2')">2n d'ESO</button>
+            <button class="nav-item" onclick="anarA('eso3')">3r d'ESO</button>
+            <button class="nav-item" onclick="anarA('eso4a')">4t ESO Aplicades</button>
+            <button class="nav-item" onclick="anarA('eso4b')">4t ESO Acadèmiques</button>
+
+            <div class="side-label">BATXILLERAT</div>
+            <button class="nav-item" onclick="anarA('bat1ct')">1r Batxillerat Científic</button>
+            <button class="nav-item" onclick="anarA('bat1cs')">1r Batxillerat Socials</button>
+            <button class="nav-item" onclick="anarA('bat1gen')">1r Batxillerat General</button>
+            <button class="nav-item" onclick="anarA('bat2ct')">2n Batxillerat Científic (PAU)</button>
+            <button class="nav-item" onclick="anarA('bat2cs')">2n Batxillerat Socials (PAU)</button>
+        </div>
+    </nav>
+
+    <button class="nav-trigger" onclick="openNav()">
+        <img src="logo.png" alt="Menu Icon">
+        <span>MENÚ</span>
+    </button>
+
+    <main id="home" class="page active">
+        <header class="hero">
+            <div class="hero-overlay">
+                <div class="hero-glass-card">
+                    <img src="logo.png" alt="Logo Principal" class="hero-main-logo">
+                    <h1>Serra d'Equacions</h1>
+                    <p>La teva plataforma de referència per a l'aprenentatge de les matemàtiques</p>
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="mainCercador" placeholder="Busca temes, exercicis o unitats..." onkeyup="filtrarContingut()">
+                    </div>
+                </div>
+            </div>
+            <div class="hero-wave">
+                <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#f3f4f6" fill-opacity="1" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,250.7C960,235,1056,181,1152,165.3C1248,149,1344,171,1392,181.3L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                </svg>
+            </div>
+        </header>
+
+        <section class="container overlap-section">
+            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Educació Secundària</h2>
+            <div class="grid-eso">
+                <div class="course-card" onclick="anarA('eso1')">
+                    <h3>1r d'ESO</h3>
+                    <p>Nombres, fraccions i geometria elemental.</p>
+                    <span class="btn-explore">Explorar temari</span>
+                </div>
+                <div class="course-card" onclick="anarA('eso2')">
+                    <h3>2n d'ESO</h3>
+                    <p>Proporcionalitat, àlgebra i Pitàgores.</p>
+                    <span class="btn-explore">Explorar temari</span>
+                </div>
+                <div class="course-card" onclick="anarA('eso3')">
+                    <h3>3r d'ESO</h3>
+                    <p>Successions, funcions i estadística.</p>
+                    <span class="btn-explore">Explorar temari</span>
+                </div>
+                <div class="course-card" onclick="anarA('eso4a')">
+                    <h3>4t Aplicades</h3>
+                    <p>Matemàtica pràctica i finances.</p>
+                    <span class="btn-explore">Explorar temari</span>
+                </div>
+                <div class="course-card" onclick="anarA('eso4b')">
+                    <h3>4t Acadèmiques</h3>
+                    <p>Trigonometria i preparació al Batxillerat.</p>
+                    <span class="btn-explore">Explorar temari</span>
+                </div>
+            </div>
+
+            <h2 class="section-title"><i class="fas fa-book"></i> Batxillerat per Modalitats</h2>
+            <div class="bat-layout">
+                <div class="branch-column">
+                    <div class="branch-header cientific">CIENTÍFIC - TECNOLÒGIC</div>
+                    <div class="branch-item" onclick="anarA('bat1ct')">
+                        <span>Matemàtiques I (1r Batx)</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="branch-item" onclick="anarA('bat2ct')">
+                        <span>Matemàtiques II (2n Batx - PAU)</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="branch-column">
+                    <div class="branch-header socials">CIÈNCIES SOCIALS</div>
+                    <div class="branch-item" onclick="anarA('bat1cs')">
+                        <span>Matemàtiques CCSS I (1r Batx)</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="branch-item" onclick="anarA('bat2cs')">
+                        <span>Matemàtiques CCSS II (2n Batx - PAU)</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+                <div class="branch-column">
+                    <div class="branch-header general">BATXILLERAT GENERAL</div>
+                    <div class="branch-item" onclick="anarA('bat1gen')">
+                        <span>Matemàtiques Generals (1r Batx)</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h2>Tens algun dubte?</h2>
+                        <p>Envia'ns el teu missatge o suggeriment. El nostre equip docent et respondrà al més aviat possible.</p>
+                        <div class="info-row">
+                            <i class="fas fa-envelope"></i>
+                            <span>serradequacions@gmail.com</span>
+                        </div>
+                        <a href="https://instagram.com/serradequacions" target="_blank" class="instagram-btn-modern">
+                            <i class="fab fa-instagram"></i> SEGUEIX-NOS A INSTAGRAM
+                        </a>
+                    </div>
+                    <div class="contact-form-box">
+                        <form action="https://formsubmit.co/serradequacions@gmail.com" method="POST" class="modern-form">
+                            <div class="form-row-2">
+                                <input type="text" name="name" placeholder="El teu nom" required>
+                                <input type="email" name="email" placeholder="Correu electrònic" required>
+                            </div>
+                            <textarea name="message" rows="5" placeholder="Escriu la teva consulta aquí..." required></textarea>
+                            <button type="submit" class="btn-submit-premium">Enviar Missatge <i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="eso1" class="page course-view">
+        <header class="course-header-v2">
+            <div class="container">
+                <button class="btn-back" onclick="anarA('home')"><i class="fas fa-arrow-left"></i> Tornar</button>
+                <h1>1r d'Educació Secundària</h1>
+            </div>
+        </header>
+        <div class="container course-body">
+            <div class="unit-card-full">
+                <div class="unit-num">U1</div>
+                <div class="unit-info">
+                    <h3>Nombres naturals i enters</h3>
+                    <div class="resource-row"><span>1.1 Suma i resta de nombres enters</span><button class="btn-pdf">PDF</button></div>
+                    <div class="resource-row"><span>1.2 Multiplicació i divisió</span><button class="btn-pdf">PDF</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="eso2" class="page course-view">
+        <header class="course-header-v2">
+            <div class="container">
+                <button class="btn-back" onclick="anarA('home')"><i class="fas fa-arrow-left"></i> Tornar</button>
+                <h1>2n d'Educació Secundària</h1>
+            </div>
+        </header>
+        <div class="container course-body">
+            <div class="unit-card-full">
+                <div class="unit-num">U1</div>
+                <div class="unit-info">
+                    <h3>Proporcionalitat i percentatges</h3>
+                    <div class="resource-row"><span>1.1 Proporcionalitat directa i inversa</span><button class="btn-pdf">PDF</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="eso3" class="page course-view">
+        <header class="course-header-v2">
+            <div class="container">
+                <button class="btn-back" onclick="anarA('home')"><i class="fas fa-arrow-left"></i> Tornar</button>
+                <h1>3r d'Educació Secundària</h1>
+            </div>
+        </header>
+        <div class="container course-body">
+            <div class="unit-card-full">
+                <div class="unit-num">U1</div>
+                <div class="unit-info">
+                    <h3>Successions numèriques</h3>
+                    <div class="resource-row"><span>1.1 Progressions aritmètiques</span><button class="btn-pdf">PDF</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="eso4a" class="page course-view">
+        <header class="course-header-v2">
+            <div class="container">
+                <button class="btn-back" onclick="anarA('home')"><i class="fas fa-arrow-left"></i> Tornar</button>
+                <h1>4t ESO - Matemàtiques Aplicades</h1>
+            </div>
+        </header>
+        <div class="container course-body">
+            <div class="unit-card-full">
+                <div class="unit-num">U1</div>
+                <div class="unit-info">
+                    <h3>Matemàtica Financera</h3>
+                    <div class="resource-row"><span>1.1 Interès simple i compost</span><button class="btn-pdf">PDF</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="eso4b" class="page course-view">
+        <header class="course-header-v2">
+            <div class="container">
+                <button class="btn-back" onclick="anarA('home')"><i class="fas fa-arrow-left"></i> Tornar</button>
+                <h1>4t ESO - Matemàtiques Acadèmiques</h1>
+            </div>
+        </header>
+        <div class="container course-body">
+            <div class="unit-card-full">
+                <div class="unit-num">U1</div>
+                <div class="unit-info">
+                    <h3>Polinomis i Fraccions Algèbriques</h3>
+                    <div class="resource-row"><span>1.1 Teorema del residu i Ruffini</span><button class="btn-pdf">PDF</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bat1ct" class="page course-view">
+        <header class="course-header-v2 header-ct">
+            <div class="container">
+                <button class="btn-back" onclick="anarA('home')"><i class="fas fa-arrow-left"></i> Tornar</button>
+                <h1>1r Batxillerat - Científic</h1>
+            </div>
+        </header>
+        <div class="container course-body">
+            <div class="unit-card-full">
+                <div class="unit-num">U1</div>
+                <div class="unit-info">
+                    <h3>Trigonometria Avançada</h3>
+                    <div class="resource-row"><span>1.1 Resolució de triangles qualsevol</span><button class="btn-pdf">PDF</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bat1cs" class="page course-view">
+        <header class="course-header-v2 header-cs">
+            <div class="container">
+                <button class="btn-back" onclick="anarA('home')"><i class="fas fa-arrow-left"></i> Tornar</button>
+                <h1>1r Batxillerat - Ciències Socials</h1>
+            </div>
+        </header>
+        <div class="container course-body">
+            <div class="unit-card-full">
+                <div class="unit-num">U1</div>
+                <div class="unit-info">
+                    <h3>Nombres Reals i Àlgebra</h3>
+                    <div class="resource-row"><span>1.1 Logaritmes i les seves propietats</span><button class="btn-pdf">PDF</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bat1gen" class="page course-view">
+        <header class="course-header-v2 header-gen">
+            <div class="container">
+                <button class="btn-back" onclick="anarA('home')"><i class="fas fa-arrow-left"></i> Tornar</button>
+                <h1>1r Batxillerat - General</h1>
+            </div>
+        </header>
+        <div class="container course-body">
+            <div class="unit-card-full">
+                <div class="unit-num">U1</div>
+                <div class="unit-info">
+                    <h3>Resolució de Problemes</h3>
+                    <div class="resource-row"><span>1.1 Estratègies de pensament computacional</span><button class="btn-pdf">PDF</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bat2ct" class="page course-view">
+        <header class="course-header-v2 header-ct">
+            <div class="container">
+                <button class="btn-back" onclick="anarA('home')"><i class="fas fa-arrow-left"></i> Tornar</button>
+                <h1>2n Batxillerat Científic (PAU)</h1>
+            </div>
+        </header>
+        <div class="container course-body">
+            
+            <div class="unit-card-full">
+                <div class="unit-num">U1</div>
+                <div class="unit-info">
+                    <h3>Àlgebra Lineal</h3>
+                    <div class="resource-row"><span>1.1 Matrius i Determinants</span><button class="btn-pdf">PDF</button></div>
+                    <div class="resource-row"><span>1.2 Sistemes d'equacions lineals</span><button class="btn-pdf">PDF</button></div>
+                </div>
+            </div>
+            
+            <div class="unit-card-full">
+                <div class="unit-num">U2</div>
+                <div class="unit-info">
+                    <h3>Càlcul Infinitesimal</h3>
+                    <div class="resource-row"><span>2.1 Derivades i aplicacions</span><button class="btn-pdf">PDF</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="bat2cs" class="page course-view">
+        <header class="course-header-v2 header-cs">
+            <div class="container">
+                <button class="btn-back" onclick="anarA('home')"><i class="fas fa-arrow-left"></i> Tornar</button>
+                <h1>2n Batxillerat Socials (PAU)</h1>
+            </div>
+        </header>
+        <div class="container course-body">
+            
+            <div class="unit-card-full">
+                <div class="unit-num">U1</div>
+                <div class="unit-info">
+                    <h3>Probabilitat i Estadística</h3>
+                    <div class="resource-row"><span>1.1 Probabilitat condicionada (Bayes)</span><button class="btn-pdf">PDF</button></div>
+                    <div class="resource-row"><span>1.2 Distribució Normal</span><button class="btn-pdf">PDF</button></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
